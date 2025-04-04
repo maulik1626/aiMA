@@ -4,6 +4,7 @@ part of 'app_pages.dart';
 
 abstract class Routes {
   static const String SPLASH = 'splashScreen';
+  static const String WELCOME = 'welcomeScreen';
   static const String LOGIN = 'loginScreen';
   static const String LANDING = 'landingScreen';
   static const String OTP = 'otpScreen';

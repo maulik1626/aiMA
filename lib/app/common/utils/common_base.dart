@@ -67,73 +67,92 @@
 //   }
 // }
 //
-// extension StrEtx on String {
-//   Widget iconImage({
-//     double? size,
-//     Color? color,
-//     BoxFit? fit,
-//     double? height,
-//     double? width,
-//     AlignmentGeometry? alignment,
-//     bool isNetworkImage = false,
-//   }) {
-//     if (isNetworkImage) {
-//       return Image.network(
-//         this,
-//         height: height?.toDouble() ?? size ?? 14,
-//         width: width?.toDouble() ?? size ?? 14,
-//         fit: fit ?? BoxFit.cover,
-//         alignment: alignment ?? Alignment.center,
-//         color: color,
-//         errorBuilder:
-//             (BuildContext context, Object error, StackTrace? stackTrace) {
-//           return Image.asset(
-//             PNGAssetsPath.icNoPhoto,
-//             height: size ?? 14,
-//             width: size ?? 14,
-//             alignment: alignment ?? Alignment.center,
-//           );
-//         },
-//       );
-//     }
-//     if (endsWith('.svg')) {
-//       return SvgPicture.asset(
-//         this,
-//         height: height?.toDouble() ?? size ?? 14,
-//         width: width?.toDouble() ?? size ?? 14,
-//         fit: fit ?? BoxFit.cover,
-//         color: color,
-//         alignment: alignment ?? Alignment.center,
-//         placeholderBuilder: (context) => Image.asset(
-//           PNGAssetsPath.icNoPhoto,
-//           height: size ?? 14,
-//           width: size ?? 14,
-//           alignment: alignment ?? Alignment.center,
-//         ),
-//       );
-//     } else {
-//       return Image.asset(
-//         this,
-//         height: height?.toDouble() ?? size ?? 14,
-//         width: width?.toDouble() ?? size ?? 14,
-//         fit: fit ?? BoxFit.cover,
-//         color: color,
-//         alignment: alignment ?? Alignment.center,
-//         errorBuilder: (context, error, stackTrace) {
-//           return Image.asset(
-//             PNGAssetsPath.icNoPhoto,
-//             height: size ?? 14,
-//             width: size ?? 14,
-//             alignment: alignment ?? Alignment.center,
-//           );
-//         },
-//       );
-//     }
-//   }
-//
-//   String get firstLetter => isNotEmpty ? this[0] : '';
-// }
-//
+
+import 'package:aima/app/common/constants/assets_path.dart';
+import 'package:flutter/material.dart';
+
+extension StrEtx on String {
+  Widget iconImage({
+    double? size,
+    Color? color,
+    BoxFit? fit,
+    double? height,
+    double? width,
+    AlignmentGeometry? alignment,
+    bool isNetworkImage = false,
+  }) {
+    if (isNetworkImage) {
+      return Image.network(
+        this,
+        height: height?.toDouble() ?? size ?? 14,
+        width: width?.toDouble() ?? size ?? 14,
+        fit: fit ?? BoxFit.cover,
+        alignment: alignment ?? Alignment.center,
+        color: color,
+        errorBuilder:
+            (BuildContext context, Object error, StackTrace? stackTrace) {
+          return Image.asset(
+            PNGAssetsPath.icNoPhoto,
+            height: size ?? 14,
+            width: size ?? 14,
+            alignment: alignment ?? Alignment.center,
+          );
+        },
+      );
+    }
+    if (endsWith('.svg')) {
+      return const SizedBox.shrink();
+    }
+    // {
+    //   return SvgPicture.asset(
+    //     this,
+    //     height: height?.toDouble() ?? size ?? 14,
+    //     width: width?.toDouble() ?? size ?? 14,
+    //     fit: fit ?? BoxFit.cover,
+    //     color: color,
+    //     alignment: alignment ?? Alignment.center,
+    //     placeholderBuilder: (context) => Image.asset(
+    //       PNGAssetsPath.icNoPhoto,
+    //       height: size ?? 14,
+    //       width: size ?? 14,
+    //       alignment: alignment ?? Alignment.center,
+    //     ),
+    //   );
+    // }
+    else {
+      return Image.asset(
+        this,
+        height: height?.toDouble() ?? size ?? 14,
+        width: width?.toDouble() ?? size ?? 14,
+        fit: fit ?? BoxFit.cover,
+        color: color,
+        alignment: alignment ?? Alignment.center,
+        errorBuilder: (context, error, stackTrace) {
+          return Image.asset(
+            PNGAssetsPath.icNoPhoto,
+            height: size ?? 14,
+            width: size ?? 14,
+            alignment: alignment ?? Alignment.center,
+          );
+        },
+      );
+    }
+  }
+
+  String get firstLetter => isNotEmpty ? this[0] : '';
+}
+
+Widget dragHandle() {
+  return Container(
+    height: 5,
+    width: 57,
+    decoration: BoxDecoration(
+      color: const Color(0xff875FD2),
+      borderRadius: BorderRadius.circular(100),
+    ),
+  );
+}
+
 // extension EnumToString on Enum {
 //   String toShortString() {
 //     return toString().split('.').last.replaceAll('_', ' ').toUpperCase();

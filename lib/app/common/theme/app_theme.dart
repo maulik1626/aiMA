@@ -6,11 +6,11 @@ import 'palette.dart';
 
 class MyMaterialTheme {
   static final ThemeData lightTheme = ThemeData(
-    fontFamily: 'Satoshi',
+    fontFamily: 'Poppins',
     useMaterial3: true,
     colorSchemeSeed: Palette.kPrimary,
     brightness: Brightness.light,
-    appBarTheme: AppBarTheme(
+    appBarTheme: const AppBarTheme(
       elevation: 0,
       foregroundColor: Palette.kPrimary,
       centerTitle: true,

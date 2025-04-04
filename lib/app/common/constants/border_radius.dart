@@ -4,6 +4,7 @@ class AppBorderRadius {
   static const double _sharp = 0.0;
   static const double _xs = 2.0;
   static const double _s = 4.0;
+  static const double _s5 = 5.0;
   static const double _sm = 6.0;
   static const double _m = 10.0;
   static const double _m12 = 12.0;
@@ -19,6 +20,8 @@ class AppBorderRadius {
   static double get xs => _xs;
   /// Returns a double value of 4.0
   static double get s => _s;
+  /// Returns a double value of 5.0
+  static double get s5 => _s5;
   /// Returns a double value of 6.0
   static double get sm => _sm;
   /// Returns a double value of 10.0

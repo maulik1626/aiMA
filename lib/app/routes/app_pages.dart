@@ -1,4 +1,6 @@
+import 'package:aima/app/features/login/login_screen.dart';
 import 'package:aima/app/features/splash/splash_screen.dart';
+import 'package:aima/app/features/welcome/welcome_screen.dart';
 import 'package:flutter/material.dart';
 
 // Import the auto-generated app routes
@@ -23,6 +25,42 @@ class RouteGenerator {
           builder: (context) {
             return _generateRoutePage(settings.name);
           },
+        );
+      case Routes.WELCOME:
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (BuildContext context, Animation<double> animation,
+                  Animation<double> secondaryAnimation) =>
+              _generateRoutePage(settings.name),
+          transitionsBuilder: (BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+              Widget child) {
+            return FadeTransition(
+              opacity: animation,
+              child: child,
+            );
+          },
+        );
+      case Routes.LOGIN:
+        return PageRouteBuilder(
+          settings: settings,
+          pageBuilder: (BuildContext context, Animation<double> animation,
+                  Animation<double> secondaryAnimation) =>
+              _generateRoutePage(settings.name),
+          transitionsBuilder: (BuildContext context,
+              Animation<double> animation,
+              Animation<double> secondaryAnimation,
+              Widget child) {
+            return SlideTransition(
+              position: Tween<Offset>(
+                begin: const Offset(0.0, 1.0),
+                end: Offset.zero,
+              ).animate(animation),
+              child: child,
+            );
+          },
+          transitionDuration: const Duration(milliseconds: 200),
         );
       // case Routes.LANDING:
       //   return PageRouteBuilder(
@@ -567,6 +605,10 @@ class RouteGenerator {
     switch (settings) {
       case Routes.SPLASH:
         return const SplashScreen();
+      case Routes.WELCOME:
+        return const WelcomeScreen();
+      case Routes.LOGIN:
+        return const LoginScreen();
       // case Routes.LANDING:
       //   return const LandingScreen();
       // case Routes.LOGIN:
